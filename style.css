@@ -66,14 +66,75 @@ article blockquote p {
   margin: 0.3rem 0;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@import "tailwindcss";
+
+:root {
+    --background: #ffffff;
+    --foreground: #171717;
 }
 
-/* ===== Essay layout override for HTML version ===== */
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
+}
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
+}
+
+/* Older article styles (kept in case you reuse them elsewhere) */
+article {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #e5e5e5;
+}
+
+article h2 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+article h3 {
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+article p {
+    margin: 0.6rem 0;
+}
+
+article ul,
+article ol {
+    margin: 0.4rem 0 0.8rem 1.5rem;
+    padding-left: 1rem;
+}
+
+article li {
+    margin: 0.25rem 0;
+}
+
+article blockquote {
+    margin: 1rem 0 1.5rem 0;
+    padding: 0.75rem 1rem;
+    border-left: 3px solid #555;
+    background: #111;
+    font-style: italic;
+}
+
+article blockquote p {
+    margin: 0.3rem 0;
+}
+
+/* Base page styling */
 html,
 body {
     margin: 0;
@@ -85,10 +146,19 @@ body {
     background: #f5f5f5;
 }
 
-/* main essay container */
-.essay {
+/* ===== Essay layout for Pandoc HTML (body.essay) ===== */
+
+/* Center the essay as a card */
+body.essay {
+    display: flex;
+    justify-content: center;
+}
+
+/* The first-level child becomes the card */
+body.essay>* {
     max-width: 720px;
-    margin: 2rem auto 4rem;
+    width: 100%;
+    margin: 2rem 1rem 4rem;
     padding: 2rem 1.5rem 3rem;
     background: #ffffff;
     border-radius: 12px;
@@ -96,59 +166,65 @@ body {
 }
 
 /* headings */
-.essay h1,
-.essay h2,
-.essay h3 {
+body.essay h1,
+body.essay h2,
+body.essay h3 {
     line-height: 1.25;
     font-weight: 600;
     color: #111;
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
+    text-align: left;
 }
 
-.essay h1 {
+body.essay h1 {
     font-size: 2rem;
     margin-top: 0;
+    text-align: center;
+    /* title centered */
 }
 
-.essay h2 {
+body.essay h2 {
     font-size: 1.35rem;
     margin-top: 2rem;
 }
 
-.essay h3 {
+body.essay h3 {
     font-size: 1.15rem;
     margin-top: 1.75rem;
 }
 
 /* paragraphs + lists */
-.essay p {
+body.essay p {
     margin: 0.5rem 0;
     font-size: 1rem;
+    text-align: justify;
+    /* <= this is what fixes ragged-right */
+    text-justify: inter-word;
 }
 
-.essay ul,
-.essay ol {
+body.essay ul,
+body.essay ol {
     margin: 0.75rem 0 0.75rem 1.5rem;
     padding: 0;
 }
 
-.essay li {
+body.essay li {
     margin: 0.25rem 0;
 }
 
 /* links */
-.essay a {
+body.essay a {
     color: #0050b3;
     text-decoration: none;
 }
 
-.essay a:hover {
+body.essay a:hover {
     text-decoration: underline;
 }
 
 /* blockquotes */
-.essay blockquote {
+body.essay blockquote {
     margin: 1.25rem 0;
     padding: 0.75rem 1rem;
     border-left: 3px solid #ddd;
@@ -157,14 +233,14 @@ body {
 }
 
 /* code / preformatted text (if any) */
-.essay code,
-.essay pre {
+body.essay code,
+body.essay pre {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
         "Liberation Mono", "Courier New", monospace;
     font-size: 0.95em;
 }
 
-.essay pre {
+body.essay pre {
     padding: 0.75rem 1rem;
     background: #f6f6f6;
     border-radius: 8px;
@@ -172,14 +248,14 @@ body {
 }
 
 /* horizontal rule */
-.essay hr {
+body.essay hr {
     border: none;
     border-top: 1px solid #e0e0e0;
     margin: 2rem 0;
 }
 
 /* small footer if you ever add one */
-.essay footer {
+body.essay footer {
     margin-top: 3rem;
     font-size: 0.85rem;
     color: #666;
