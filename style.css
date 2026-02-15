@@ -71,3 +71,116 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* ===== Essay layout override for HTML version ===== */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    line-height: 1.6;
+    color: #111;
+    background: #f5f5f5;
+}
+
+/* main essay container */
+.essay {
+    max-width: 720px;
+    margin: 2rem auto 4rem;
+    padding: 2rem 1.5rem 3rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* headings */
+.essay h1,
+.essay h2,
+.essay h3 {
+    line-height: 1.25;
+    font-weight: 600;
+    color: #111;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.essay h1 {
+    font-size: 2rem;
+    margin-top: 0;
+}
+
+.essay h2 {
+    font-size: 1.35rem;
+    margin-top: 2rem;
+}
+
+.essay h3 {
+    font-size: 1.15rem;
+    margin-top: 1.75rem;
+}
+
+/* paragraphs + lists */
+.essay p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.essay ul,
+.essay ol {
+    margin: 0.75rem 0 0.75rem 1.5rem;
+    padding: 0;
+}
+
+.essay li {
+    margin: 0.25rem 0;
+}
+
+/* links */
+.essay a {
+    color: #0050b3;
+    text-decoration: none;
+}
+
+.essay a:hover {
+    text-decoration: underline;
+}
+
+/* blockquotes */
+.essay blockquote {
+    margin: 1.25rem 0;
+    padding: 0.75rem 1rem;
+    border-left: 3px solid #ddd;
+    background: #fafafa;
+    font-style: italic;
+}
+
+/* code / preformatted text (if any) */
+.essay code,
+.essay pre {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+    font-size: 0.95em;
+}
+
+.essay pre {
+    padding: 0.75rem 1rem;
+    background: #f6f6f6;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+/* horizontal rule */
+.essay hr {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 2rem 0;
+}
+
+/* small footer if you ever add one */
+.essay footer {
+    margin-top: 3rem;
+    font-size: 0.85rem;
+    color: #666;
+}
